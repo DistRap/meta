@@ -1,4 +1,5 @@
-< DistRap
+< Colah
+| DistRap
 | HaskellEmbedded
 | Galois
 | Sorki

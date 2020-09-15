@@ -11,7 +11,8 @@ let mkRepo =
 
 in  emci.mkProj
       "DistRap"
-      [ mkRepo Org.DistRap "can4disco"
+      [ mkRepo Org.Colah "ImplicitCAD"
+      , mkRepo Org.DistRap "can4disco"
       , mkRepo Org.DistRap "cidl"
       , mkRepo Org.DistRap "hgdb"
       , mkRepo Org.DistRap "hgdbmi"
@@ -35,5 +36,4 @@ in  emci.mkProj
       , mkRepo Org.HexamonTech "ivory-tower-lorawan"
       , mkRepo Org.HexamonTech "monstick-firmware"
       , mkRepo Org.JuliaLongtin "hslice"
-      , mkRepo Org.JuliaLongtin "ImplicitCAD"
       ]
