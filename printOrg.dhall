@@ -3,7 +3,8 @@ let Org = ./Org.dhall
 let printOrg =
       λ(org : Org) →
         merge
-          { DistRap = "distrap"
+          { Colah = "colah"
+          , DistRap = "distrap"
           , HaskellEmbedded = "HaskellEmbedded"
           , HexamonTech = "hexamon-tech"
           , Galois = "GaloisInc"
