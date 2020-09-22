@@ -14,6 +14,7 @@ in  emci.mkProj
       [ mkRepo Org.Colah "ImplicitCAD"
       , mkRepo Org.DistRap "can4disco"
       , mkRepo Org.DistRap "cidl"
+      , mkRepo Org.DistRap "gcodehs"
       , mkRepo Org.DistRap "hgdb"
       , mkRepo Org.DistRap "hgdbmi"
       , mkRepo Org.DistRap "ivory"
