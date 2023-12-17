@@ -1,4 +1,4 @@
-PHONY: format
+PHONY: format repolist http-cloner
 
 format:
 	find . -name '*.dhall' -exec dhall format {} \;
