@@ -1,40 +1,80 @@
-let emci = https://raw.githubusercontent.com/sorki/emci/master/dhall/emci.dhall
+let dhall-proj = ./dhall-proj/package.dhall
 
-let Org = ./Org.dhall
+let Repo = dhall-proj.schemas.Repo
 
-let printOrg = ./printOrg.dhall
+let Org = dhall-proj.types.Org
 
-let mkRepo =
-      λ(org : Org) →
-      λ(name : Text) →
-        emci.mkRepo name ("https://github.com/" ++ printOrg org ++ "/" ++ name)
-
-in  emci.mkProj
-      "DistRap"
-      [ mkRepo Org.DistRap "can4disco"
-      , mkRepo Org.DistRap "cidl"
-      , mkRepo Org.DistRap "gcodehs"
-      , mkRepo Org.DistRap "gidl"
-      , mkRepo Org.DistRap "hgdb"
-      , mkRepo Org.DistRap "hgdbmi"
-      , mkRepo Org.DistRap "ivory"
-      , mkRepo Org.DistRap "tower"
-      , mkRepo Org.DistRap "ivory-tower-stm32"
-      , mkRepo Org.DistRap "ivory-tower-base"
-      , mkRepo Org.DistRap "ivory-tower-canopen"
-      , mkRepo Org.DistRap "ivory-tower-drivers"
-      , mkRepo Org.DistRap "ivory-tower-helloworld"
-      , mkRepo Org.DistRap "ivory-tower-hxstream"
-      , mkRepo Org.DistRap "ivory-tower-posix"
-      , mkRepo Org.DistRap "lambdadrive"
-      , mkRepo Org.DistRap "meta"
-      , mkRepo Org.HaskellEmbedded "book"
-      , mkRepo Org.HaskellEmbedded "data-stm32"
-      , mkRepo Org.HaskellEmbedded "ivory-tower-nix"
-      , mkRepo Org.HaskellEmbedded "ivory-tower-stm32-generated"
-      , mkRepo Org.HaskellThings "ImplicitCAD"
-      , mkRepo Org.HaskellThings "hslice"
-      , mkRepo Org.HexamonTech "ivory-tower-cayenne"
-      , mkRepo Org.HexamonTech "ivory-tower-lorawan"
-      , mkRepo Org.HexamonTech "monstick-firmware"
+let distrapRepos =
+      [ Repo::{ name = "can4disco" }
+      , Repo::{ name = "can4disco-hw" }
+      , Repo::{ name = "cidl" }
+      , Repo::{ name = "distrap-branding" }
+      , Repo::{ name = "gcodehs" }
+      , Repo::{ name = "gidl" }
+      , Repo::{ name = "hgdb" }
+      , Repo::{ name = "hgdbmi" }
+      , Repo::{ name = "hs-canopen" }
+      , Repo::{ name = "ivory" }
+      , Repo::{ name = "ivory-tower-stm32" }
+      , Repo::{ name = "ivory-tower-base" }
+      , Repo::{ name = "ivory-tower-canopen" }
+      , Repo::{ name = "ivory-tower-drivers" }
+      , Repo::{ name = "ivory-tower-helloworld" }
+      , Repo::{ name = "ivory-tower-hxstream" }
+      , Repo::{ name = "ivory-tower-posix" }
+      , Repo::{ name = "lambdadrive" }
+      , Repo::{ name = "library" }
+      , Repo::{ name = "liveplot" }
+      , Repo::{ name = "meta" }
+      , Repo::{ name = "nanovg-blendish" }
+      , Repo::{ name = "stm32-tests" }
+      , Repo::{ name = "tower" }
+      , Repo::{ name = "website" }
       ]
+
+let haskellEmbeddedRepos =
+      [ Repo::{ name = "book", org = Org.HaskellEmbedded }
+      , Repo::{ name = "data-stm32", org = Org.HaskellEmbedded }
+      , Repo::{ name = "esp-sdk-ivory", org = Org.HaskellEmbedded }
+      , Repo::{ name = "ion", org = Org.HaskellEmbedded }
+      , Repo::{ name = "ivory-tower-linux", org = Org.HaskellEmbedded }
+      , Repo::{ name = "ivory-tower-nix", org = Org.HaskellEmbedded }
+      , Repo::{
+        , name = "ivory-tower-stm32-generated"
+        , org = Org.HaskellEmbedded
+        }
+      ]
+
+let haskellThingsRepos =
+      [ Repo::{ name = "hslice", org = Org.HaskellThings }
+      , Repo::{ name = "ImplicitCAD", org = Org.HaskellThings }
+      , Repo::{ name = "implicitpipe", org = Org.HaskellThings }
+      , Repo::{ name = "IObjects", org = Org.HaskellThings }
+      ]
+
+let hexamonTechRepos =
+      [ Repo::{ name = "ivory-tower-cayenne", org = Org.HexamonTech }
+      , Repo::{ name = "ivory-tower-lorawan", org = Org.HexamonTech }
+      , Repo::{ name = "monstick-firmware", org = Org.HexamonTech }
+      , Repo::{ name = "nixos-lorawan-gateway", org = Org.HexamonTech }
+      ]
+
+let galoisRepos =
+      [ Repo::{ name = "ivorylang-org", org = Org.Galois }
+      , Repo::{ name = "gec", org = Org.Galois }
+      , Repo::{ name = "smaccmpilot-stm32f4", org = Org.Galois }
+      , Repo::{ name = "smaccmpilot-org", org = Org.Galois }
+      ]
+
+let distrap =
+        { name = "DistRap"
+        , repos =
+              distrapRepos
+            # haskellEmbeddedRepos
+            # haskellThingsRepos
+            # hexamonTechRepos
+            # galoisRepos
+        }
+      : dhall-proj.types.Project
+
+in  distrap
