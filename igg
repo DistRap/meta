@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# ivory git grep
+# git grep in multiple subfolders
+RED='\033[0;31m'
+NC='\033[0m'
+
+for f in $( cat repolist.txt ); do
+  test -d $f || continue
+  cd $f
+
+  IFS=""
+  fst=1
+  git --no-pager grep --context 2 --heading --color $* | while read line; do
+    case "$line" in
+      *.js) break;;
+      *.html) break;;
+      *.hs)
+          echo -e "$RED $f/$line $NC"
+          continue;;
+    esac
+    echo "$line"
+  done
+
+  cd ..
+done
