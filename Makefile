@@ -3,6 +3,10 @@ PHONY: format
 format:
 	find . -name '*.dhall' -exec dhall format {} \;
 
+repolist:
+	echo '(./dhall-proj/render.dhall).Project.renderRepoList ./distrap.dhall' \
+		| dhall text > repolist.txt
+
 todolist:
 	echo '(./dhall-proj/render.dhall).Project.renderTODOList ./distrap.dhall' \
 		| dhall text > TODO.org

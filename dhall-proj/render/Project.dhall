@@ -2,6 +2,14 @@ let Prelude = https://prelude.dhall-lang.org/v22.0.0/package.dhall
 
 let types = ../types.dhall
 
+let renderRepoList =
+      λ(proj : types.Project) →
+        Prelude.Text.concatMapSep
+          "\n"
+          types.Repo
+          (λ(repo : types.Repo) → "${repo.name}")
+          proj.repos
+
 let renderTODOList =
       λ(proj : types.Project) →
             ''
@@ -31,4 +39,4 @@ let renderCloner = renderClonerF (./Repo.dhall).repoGitUrl
 
 let renderHTTPCloner = renderClonerF (./Repo.dhall).repoHttpUrl
 
-in  { renderCloner, renderHTTPCloner, renderTODOList }
+in  { renderCloner, renderHTTPCloner, renderRepoList, renderTODOList }
