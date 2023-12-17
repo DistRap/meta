@@ -2,3 +2,8 @@
 cloner.sh
 http-cloner.sh
 TODO.org
+*
+!dhall-proj/
+!distrap.dhall
+!igg
+!Makefile
