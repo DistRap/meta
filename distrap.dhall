@@ -11,8 +11,7 @@ let mkRepo =
 
 in  emci.mkProj
       "DistRap"
-      [ mkRepo Org.Colah "ImplicitCAD"
-      , mkRepo Org.DistRap "can4disco"
+      [ mkRepo Org.DistRap "can4disco"
       , mkRepo Org.DistRap "cidl"
       , mkRepo Org.DistRap "gcodehs"
       , mkRepo Org.DistRap "gidl"
@@ -33,8 +32,9 @@ in  emci.mkProj
       , mkRepo Org.HaskellEmbedded "data-stm32"
       , mkRepo Org.HaskellEmbedded "ivory-tower-nix"
       , mkRepo Org.HaskellEmbedded "ivory-tower-stm32-generated"
+      , mkRepo Org.HaskellThings "ImplicitCAD"
+      , mkRepo Org.HaskellThings "hslice"
       , mkRepo Org.HexamonTech "ivory-tower-cayenne"
       , mkRepo Org.HexamonTech "ivory-tower-lorawan"
       , mkRepo Org.HexamonTech "monstick-firmware"
-      , mkRepo Org.JuliaLongtin "hslice"
       ]

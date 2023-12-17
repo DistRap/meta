@@ -1,7 +1,7 @@
-< Colah
-| DistRap
-| HaskellEmbedded
+< DistRap
 | Galois
+| HaskellEmbedded
+| HaskellThings
 | Sorki
 | HexamonTech
 | JuliaLongtin
