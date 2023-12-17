@@ -10,3 +10,4 @@ todolist:
 cloner:
 	echo '(./dhall-proj/render.dhall).Project.renderCloner ./dist.dhall' \
 		| dhall text > cloner.sh
+	chmod +x cloner.sh
