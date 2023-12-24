@@ -46,7 +46,8 @@ let haskellEmbeddedRepos =
       ]
 
 let haskellThingsRepos =
-      [ Repo::{ name = "hslice", org = Org.HaskellThings }
+      [ Repo::{ name = "floating-bits", org = Org.HaskellThings }
+      , Repo::{ name = "hslice", org = Org.HaskellThings }
       , Repo::{ name = "ImplicitCAD", org = Org.HaskellThings }
       , Repo::{ name = "implicitpipe", org = Org.HaskellThings }
       , Repo::{ name = "IObjects", org = Org.HaskellThings }
