@@ -3,6 +3,5 @@
 | HaskellEmbedded
 | HaskellThings
 | Sorki
-| HexamonTech
 | JuliaLongtin
 >

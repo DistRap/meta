@@ -6,7 +6,6 @@ in  λ(org : Org) →
         , Galois = "GaloisInc"
         , HaskellEmbedded = "HaskellEmbedded"
         , HaskellThings = "Haskell-Things"
-        , HexamonTech = "hexamon-tech"
         , JuliaLongtin = "julialongtin"
         , Sorki = "sorki"
         }

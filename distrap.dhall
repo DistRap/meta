@@ -18,15 +18,19 @@ let distrapRepos =
       , Repo::{ name = "ivory-tower-stm32" }
       , Repo::{ name = "ivory-tower-base" }
       , Repo::{ name = "ivory-tower-canopen" }
+      , Repo::{ name = "ivory-tower-cayenne" }
       , Repo::{ name = "ivory-tower-drivers" }
       , Repo::{ name = "ivory-tower-helloworld" }
       , Repo::{ name = "ivory-tower-hxstream" }
+      , Repo::{ name = "ivory-tower-lorawan" }
       , Repo::{ name = "ivory-tower-posix" }
       , Repo::{ name = "lambdadrive" }
       , Repo::{ name = "library" }
       , Repo::{ name = "liveplot" }
       , Repo::{ name = "meta" }
+      , Repo::{ name = "monstick-firmware" }
       , Repo::{ name = "nanovg-blendish" }
+      , Repo::{ name = "nixos-lorawan-gateway" }
       , Repo::{ name = "stm32-tests" }
       , Repo::{ name = "tower" }
       , Repo::{ name = "website" }
@@ -53,13 +57,6 @@ let haskellThingsRepos =
       , Repo::{ name = "IObjects", org = Org.HaskellThings }
       ]
 
-let hexamonTechRepos =
-      [ Repo::{ name = "ivory-tower-cayenne", org = Org.HexamonTech }
-      , Repo::{ name = "ivory-tower-lorawan", org = Org.HexamonTech }
-      , Repo::{ name = "monstick-firmware", org = Org.HexamonTech }
-      , Repo::{ name = "nixos-lorawan-gateway", org = Org.HexamonTech }
-      ]
-
 let galoisRepos =
       [ Repo::{ name = "ivorylang-org", org = Org.Galois }
       , Repo::{ name = "gec", org = Org.Galois }
@@ -73,7 +70,6 @@ let distrap =
               distrapRepos
             # haskellEmbeddedRepos
             # haskellThingsRepos
-            # hexamonTechRepos
             # galoisRepos
         }
       : dhall-proj.types.Project
