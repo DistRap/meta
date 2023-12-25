@@ -39,4 +39,34 @@ let renderCloner = renderClonerF (./Repo.dhall).repoGitUrl
 
 let renderHTTPCloner = renderClonerF (./Repo.dhall).repoHttpUrl
 
-in  { renderCloner, renderHTTPCloner, renderRepoList, renderTODOList }
+let renderDeleter =
+      λ(proj : types.Project) →
+            ''
+            #!/usr/bin/env bash
+            ''
+        ++  Prelude.Text.concatMapSep
+              "\n"
+              types.Repo
+              ( λ(repo : types.Repo) →
+                  "test -d ${repo.name} && git -C ${repo.name} diff --quiet && git -C ${repo.name} diff --cached --quiet && rm -rf ${repo.name}"
+              )
+              proj.repos
+
+let renderUpdater =
+      λ(proj : types.Project) →
+            ''
+            #!/usr/bin/env bash
+            ''
+        ++  Prelude.Text.concatMapSep
+              "\n"
+              types.Repo
+              (λ(repo : types.Repo) → "test -d ${repo.name} && git pull -C ${repo.name}")
+              proj.repos
+
+in  { renderCloner
+    , renderDeleter
+    , renderHTTPCloner
+    , renderRepoList
+    , renderTODOList
+    , renderUpdater
+    }

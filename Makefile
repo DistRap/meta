@@ -1,4 +1,4 @@
-PHONY: format repolist http-cloner
+PHONY: format repolist http-cloner deleter updater
 
 format:
 	find . -name '*.dhall' -exec dhall format {} \;
@@ -15,6 +15,16 @@ cloner:
 	echo '(./dhall-proj/render.dhall).Project.renderCloner ./distrap.dhall' \
 		| dhall text > cloner.sh
 	chmod +x cloner.sh
+
+deleter:
+	echo '(./dhall-proj/render.dhall).Project.renderDeleter ./distrap.dhall' \
+		| dhall text > deleter.sh
+	chmod +x deleter.sh
+
+updater:
+	echo '(./dhall-proj/render.dhall).Project.renderUpdater ./distrap.dhall' \
+		| dhall text > updater.sh
+	chmod +x updater.sh
 
 http-cloner:
 	echo '(./dhall-proj/render.dhall).Project.renderHTTPCloner ./distrap.dhall' \
