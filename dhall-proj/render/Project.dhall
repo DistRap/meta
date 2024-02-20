@@ -60,7 +60,7 @@ let renderUpdater =
         ++  Prelude.Text.concatMapSep
               "\n"
               types.Repo
-              (λ(repo : types.Repo) → "test -d ${repo.name} && git pull -C ${repo.name}")
+              (λ(repo : types.Repo) → "test -d ${repo.name} && git -C ${repo.name} pull")
               proj.repos
 
 in  { renderCloner
