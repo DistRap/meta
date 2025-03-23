@@ -15,7 +15,6 @@ let distrapRepos =
       , Repo::{ name = "gidl" }
       , Repo::{ name = "hgdbmi" }
       , Repo::{ name = "hocd" }
-      , Repo::{ name = "hs-canopen" }
       , Repo::{ name = "ivory" }
       , Repo::{ name = "ivory-tower-stm32" }
       , Repo::{ name = "ivory-tower-base" }
