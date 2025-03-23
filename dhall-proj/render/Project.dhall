@@ -65,8 +65,22 @@ let renderUpdater =
               )
               proj.repos
 
+let renderDirtyChecker =
+      λ(proj : types.Project) →
+            ''
+            #!/usr/bin/env bash
+            ''
+        ++  Prelude.Text.concatMapSep
+              "\n"
+              types.Repo
+              ( λ(repo : types.Repo) →
+                  "test -z \"$( git -C ${repo.name} status --porcelain )\" || echo \"${repo.name} is dirty\""
+              )
+              proj.repos
+
 in  { renderCloner
     , renderDeleter
+    , renderDirtyChecker
     , renderHTTPCloner
     , renderRepoList
     , renderTODOList
