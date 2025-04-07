@@ -28,11 +28,14 @@ let renderClonerF =
       λ(proj : types.Project) →
             ''
             #!/usr/bin/env bash
+            set -x
             ''
         ++  Prelude.Text.concatMapSep
               "\n"
               types.Repo
-              (λ(repo : types.Repo) → "git clone ${renderFun repo}")
+              ( λ(repo : types.Repo) →
+                  "test -d ${repo.name} || git clone ${renderFun repo}"
+              )
               proj.repos
 
 let renderCloner = renderClonerF (./Repo.dhall).repoGitUrl
@@ -56,6 +59,7 @@ let renderUpdater =
       λ(proj : types.Project) →
             ''
             #!/usr/bin/env bash
+            set -x
             ''
         ++  Prelude.Text.concatMapSep
               "\n"
@@ -74,7 +78,7 @@ let renderDirtyChecker =
               "\n"
               types.Repo
               ( λ(repo : types.Repo) →
-                  "test -z \"$( git -C ${repo.name} status --porcelain )\" || echo \"${repo.name} is dirty\""
+                  "test -z \"\$( git -C ${repo.name} status --porcelain )\" || echo \"${repo.name} is dirty\""
               )
               proj.repos
 
