@@ -24,6 +24,7 @@ let distrapRepos =
       , Repo::{ name = "ivory-tower-helloworld" }
       , Repo::{ name = "ivory-tower-hxstream" }
       , Repo::{ name = "ivory-tower-lorawan" }
+      , Repo::{ name = "ivory-tower-net" }
       , Repo::{ name = "ivory-tower-posix" }
       , Repo::{ name = "lambdadrive" }
       , Repo::{ name = "library" }
